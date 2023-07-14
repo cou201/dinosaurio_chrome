@@ -10,7 +10,6 @@ if (document.readyState === "complete" || document.readyState === "interactive")
 function Init() {
     time = new Date();
     Start();
-    Loop();
 }
 
 function Loop() {
@@ -70,8 +69,15 @@ function Start() {
     document.addEventListener("keydown", HandleKeyDownSpace);
     document.addEventListener("click", HandleJump);
     document.addEventListener("touchstart", HandleJump);
+    var btnIniciar = document.getElementById("btn-iniciar");
+    btnIniciar.addEventListener("click", HandleIniciar);
 }
-
+function HandleIniciar() {
+    var btnIniciar = document.getElementById("btn-iniciar");
+    btnIniciar.style.display = "none"; // Ocultar el botón de inicio
+    parado = false; // Iniciar el juego
+    Loop(); // Iniciar el bucle de actualización
+}
 function Update() {
     if (parado) return;
 
